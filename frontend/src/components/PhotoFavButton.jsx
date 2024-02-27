@@ -8,13 +8,13 @@ const PhotoFavButton = () => {
   const [favoritePhoto, setFavoritePhoto] = useState(false);
 
   const toggleFavorite = () => {
-    setFavoritePhoto(!favoritePhoto);
+    setFavoritePhoto(prevFavoritePhoto => !prevFavoritePhoto);
   };
 
   return (
     <div className="photo-list__fav-icon" onClick={toggleFavorite}>
       <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
+        <FavIcon selected={favoritePhoto} />
       </div>
     </div>
   );
