@@ -17,13 +17,12 @@ const sampleDataForPhotoListItem = {
 
 const photos = new Array(3).fill(sampleDataForPhotoListItem);
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
   return (
     <div className="App">
       <div className="photo-list">
-        {photos.map((photo) => (
-          <PhotoListItem key={photo.id} sampleData={photo} />
+        {photos.map((photo, index) => (
+          <PhotoListItem key={index} sampleData={photo} />
         ))}
       </div>
     </div>
