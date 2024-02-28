@@ -23,7 +23,6 @@ const App = () => {
         ))} */}
         <PhotoList />
         <TopicList topics={sampleDataForTopicList} />
-        <TopicListItem />
       </div>
     </div>
   );

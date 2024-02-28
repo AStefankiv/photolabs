@@ -6,11 +6,11 @@ import TopicListItem from "./TopicListItem";
 const TopicList = ({ topics }) => {
   return (
     <div className="top-nav-bar__topic-list">
-      <p>
-        {topics.map((topic, index) => (
-          <li key={index} className="topic-list__item">{topic.title}</li>
+      <ul>
+        {topics.map((topic) => (
+          <TopicListItem key={topic.id} topic={topic} />
         ))}
-      </p>
+      </ul>
     </div>
   );
 };
