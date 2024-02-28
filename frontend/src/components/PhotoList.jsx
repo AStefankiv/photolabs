@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../styles/PhotoList.scss";
+import "../styles/PhotoListItem.scss";
 
 const sampleDataForPhotoList = [
   {
@@ -66,7 +67,7 @@ const PhotoList = () => {
           <div className="photo-list__user-details">
             <img className="photo-list__user-profile" src={photo.user.profile} alt='Profile' />
             <div className="photo-list__user-info">
-              {photo.user.username}
+              {photo.user.username} {' '} {photo.user.name}
               <div className="photo-list__user-location">
                 {photo.location.city}, {photo.location.country}
               </div>
