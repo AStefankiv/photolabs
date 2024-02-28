@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="photo-list">
-        <TopNavigationBar />
+        <TopNavigationBar topics={sampleDataForTopicList} />
         <PhotoList />
         {/* <TopicList topics={sampleDataForTopicList} /> */}
       </div>
@@ -26,4 +26,3 @@ const App = () => {
 };
 
 export default App;
-export { sampleDataForTopicList };

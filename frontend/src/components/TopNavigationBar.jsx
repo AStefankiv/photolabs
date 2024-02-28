@@ -2,14 +2,13 @@ import React from 'react';
 
 import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
-import { sampleDataForTopicList } from '../App';
 import FavBadge from './FavBadge';
 
-const TopNavigation = () => {
+const TopNavigation = ({ topics }) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={sampleDataForTopicList} />
+      <TopicList topics={topics} />
       <FavBadge />
     </div>
   );
