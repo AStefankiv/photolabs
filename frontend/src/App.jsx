@@ -4,8 +4,7 @@ import React from 'react';
 import PhotoList from 'components/PhotoList';
 import './App.scss';
 import TopicList from 'components/TopicList';
-import TopicListItem from 'components/TopicListItem';
-
+import TopNavigationBar from 'components/TopNavigationBar';
 
 const sampleDataForTopicList = [
   {id: "1", slug: "topic-1", title: "Nature",},
@@ -18,14 +17,13 @@ const App = () => {
   return (
     <div className="App">
       <div className="photo-list">
-        {/* {photos.map((photo, index) => (
-          <PhotoListItem key={index} sampleData={photo} />
-        ))} */}
+        <TopNavigationBar />
         <PhotoList />
-        <TopicList topics={sampleDataForTopicList} />
+        {/* <TopicList topics={sampleDataForTopicList} /> */}
       </div>
     </div>
   );
 };
 
 export default App;
+export { sampleDataForTopicList };

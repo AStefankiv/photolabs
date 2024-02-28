@@ -3,9 +3,9 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 
-const TopicListItem = ({ topic }) => {
+const TopicListItem = ({ topicLI }) => {
   return (
-    <li className="topic-list__item">{topic.title}</li>
+    <div className="topic-list__item">{topicLI.title}</div>
   );
 };
 
