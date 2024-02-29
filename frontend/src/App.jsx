@@ -1,10 +1,8 @@
 import React from 'react';
 
 // import PhotoListItem from './components/PhotoListItem';
-import PhotoList from 'components/PhotoList';
 import './App.scss';
-import TopicList from 'components/TopicList';
-import TopNavigationBar from 'components/TopNavigationBar';
+import HomeRoute from 'components/HomeRoute';
 
 const sampleDataForTopicList = [
   {id: "1", slug: "topic-1", title: "Nature",},
@@ -17,9 +15,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="photo-list">
-        <TopNavigationBar topics={sampleDataForTopicList} />
-        <PhotoList />
-        {/* <TopicList topics={sampleDataForTopicList} /> */}
+        <HomeRoute topics={sampleDataForTopicList}/>
       </div>
     </div>
   );
