@@ -5,7 +5,7 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = ({ topicLI }) => {
   return (
-    <div className="topic-list__item">{topicLI.title}</div>
+    <li className="topic-list__item">{topicLI.title}</li>
   );
 };
 

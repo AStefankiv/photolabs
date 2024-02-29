@@ -2,14 +2,15 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import "../styles/PhotoListItem.scss";
-import photos from '../mocks/photos';
+import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoList = () => {
+const PhotoList = (props) => {
   return (
     <ul className="photo-list">
-      {photos.map((photo, index) => (
+      {props.photos.map((photo, index) => (
         <li key={index} className='photo-list__item'>
+          <PhotoFavButton />
           <img className="photo-list__image" src={photo.urls.regular} alt="Photo"
           />
           <div className="photo-list__user-details">
