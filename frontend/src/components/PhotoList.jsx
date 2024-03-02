@@ -18,18 +18,11 @@ import PhotoListItem from "./PhotoListItem";
 
 // export default PhotoList;
 
-
-const PhotoList = ({ photos, addFavorite, removeFavorite, isFavorite }) => {
+const PhotoList = ({ photos, toggleFav, isFav }) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
-        <PhotoListItem
-          key={photo.id}
-          photo={photo}
-          addFavorite={addFavorite}
-          removeFavorite={removeFavorite}
-          isFavorite={isFavorite}
-        />
+        <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} isFav={isFav} />
       ))}
     </ul>
   );
