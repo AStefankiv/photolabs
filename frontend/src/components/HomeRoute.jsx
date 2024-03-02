@@ -3,6 +3,7 @@ import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
 import TopNavigationBar from 'components/TopNavigationBar';
 import { useState } from 'react';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 
 const HomeRoute = ({ topics = [], photos }) => {
@@ -23,10 +24,16 @@ const HomeRoute = ({ topics = [], photos }) => {
 
   const isFavPhotoExist = like.length > 0;
 
+
+  const [modal, setModal] = useState(false);
+  const showModal = () => setModal(true);
+
+
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList photos={photos} toggleFav={toggleFav} isFav={isFav} />
+      <PhotoList photos={photos} toggleFav={toggleFav} isFav={isFav} showModal={showModal} />
+      {modal && <PhotoDetailsModal />}
     </div>
   );
 };

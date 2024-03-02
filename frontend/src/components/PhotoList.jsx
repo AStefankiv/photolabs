@@ -5,11 +5,11 @@ import "../styles/PhotoListItem.scss";
 import PhotoListItem from "./PhotoListItem";
 
 
-const PhotoList = ({ photos, toggleFav, isFav }) => {
+const PhotoList = ({ photos, toggleFav, isFav, showModal }) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
-        <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} isFav={isFav} />
+        <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} isFav={isFav} showModal={showModal} />
       ))}
     </ul>
   );
