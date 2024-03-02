@@ -2,21 +2,47 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ sampleData }) => {
+
+// const PhotoListItem = ({ photo }) => {
+//   return (
+//     <li className='photo-list__item'>
+//       <PhotoFavButton />
+//       <img className="photo-list__image" src={photo.urls.regular} alt="Photo"
+//       />
+//       <div className="photo-list__user-details">
+//         <img className="photo-list__user-profile" src={photo.user.profile} alt='Profile' />
+//         <div className="photo-list__user-info">
+//           {photo.user.username} {' '} {photo.user.name}
+//           <div className="photo-list__user-location">
+//             {photo.location.city}, {photo.location.country}
+//           </div>
+//         </div>
+//       </div>
+//     </li>
+//   );
+// };
+
+// export default PhotoListItem;
+
+
+const PhotoListItem = ({ photo, addFavorite, removeFavorite, isFavorite }) => {
+  const favorite = isFavorite(photo.id);
+
   return (
-    <div className="photo-list__item">
-      <PhotoFavButton isFavPhotoExist={sampleData.isFavPhotoExist} />
-      <img className="photo-list__image" src={sampleData.imageSource} alt='Photo' />
+    <li className='photo-list__item'>
+      <PhotoFavButton photo={photo} onToggleFavorite={() => favorite ? removeFavorite(photo.id) : addFavorite(photo)} isFavorite={favorite} />
+      <img className="photo-list__image" src={photo.urls.regular} alt="Photo"
+      />
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={sampleData.profile} alt='Profile' />
+        <img className="photo-list__user-profile" src={photo.user.profile} alt='Profile' />
         <div className="photo-list__user-info">
-          {sampleData.username}
+          {photo.user.username} {' '} {photo.user.name}
           <div className="photo-list__user-location">
-            {sampleData.location.city}, {sampleData.location.country}
+            {photo.location.city}, {photo.location.country}
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
