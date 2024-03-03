@@ -16,11 +16,28 @@ const App = () => {
     setModal(true);
   };
 
+  const [like, setLike] = useState([]);
+
+  const toggleFav = (photoId) => {
+    if (like.includes(photoId)) {
+      setLike(like.filter(id => id !== photoId));
+    } else {
+      setLike([...like, photoId]);
+    }
+  };
+
+  const isFav = (photoId) => like.includes(photoId);
+  
+  console.log(like);
+
+  const isFavPhotoExist = like.length > 0;
+
+
   return (
     <div className="App">
       <div className="photo-list">
-        <HomeRoute topics={topics} photos={photos} showModal={showModal} />
-        {modal && <PhotoDetailsModal selectedPhoto={selectedPhoto} setModal={setModal} />}
+        <HomeRoute topics={topics} photos={photos} showModal={showModal} like={like} setLike={setLike} toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist}/>
+        {modal && <PhotoDetailsModal selectedPhoto={selectedPhoto} setModal={setModal} like={like} setLike={setLike} toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist}/>}
       </div>
     </div>
   );

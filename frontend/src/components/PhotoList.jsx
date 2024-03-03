@@ -7,9 +7,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = ({ photos, toggleFav, isFav, showModal }) => {
 
-  if (typeof(photos) === 'object') {
-    photos = Object.values(photos);
-  }
+  console.log('Photos' + photos);
   
   return (
     <ul className="photo-list">

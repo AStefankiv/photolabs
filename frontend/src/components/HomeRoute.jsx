@@ -2,26 +2,10 @@ import React from 'react';
 import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
 import TopNavigationBar from 'components/TopNavigationBar';
-import { useState } from 'react';
 
 
-const HomeRoute = ({ topics = [], photos, showModal }) => {
-  const [like, setLike] = useState([]);
-
-  const toggleFav = (photoId) => {
-    if (like.includes(photoId)) {
-      setLike(like.filter(id => id !== photoId));
-    } else {
-      setLike([...like, photoId]);
-    }
-  };
-
-  const isFav = (photoId) => {
-    return like.includes(photoId);
-  };
-  console.log(like);
-
-  const isFavPhotoExist = like.length > 0;
+const HomeRoute = ({ topics = [], photos, showModal, toggleFav, isFav, isFavPhotoExist }) => {
+  
 
   return (
     <div className="home-route">

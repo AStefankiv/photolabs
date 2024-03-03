@@ -5,9 +5,14 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ selectedPhoto, setModal, isFav, toggleFav, showModal }) => {
+const PhotoDetailsModal = ({ selectedPhoto, setModal, toggleFav, showModal, isFav }) => {
   console.log(selectedPhoto);
-  console.log(selectedPhoto.SIMILAR_PHOTOS);
+  console.log('selectedPhoto.SIMILAR_PHOTOS' + selectedPhoto.SIMILAR_PHOTOS);
+
+  const similarPhotosArray = selectedPhoto.SIMILAR_PHOTOS ? Object.values(selectedPhoto.SIMILAR_PHOTOS) : [];//Object.values() to convert the object to an array
+  console.log('similarPhotosArray' + similarPhotosArray);
+  console.log('Array???' + Array.isArray(similarPhotosArray));
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => setModal(false)}>
@@ -28,8 +33,7 @@ const PhotoDetailsModal = ({ selectedPhoto, setModal, isFav, toggleFav, showModa
         <p className='photo-details-modal__header'>Similar Photos</p>
       </div>
       <div className='photo-details-modal__top-bar'>
-        {/* <PhotoList photos={selectedPhoto.SIMILAR_PHOTOS} toggleFav={toggleFav} isFav={isFav} showModal={showModal} /> */}
-        {/* <PhotoList /> */}
+        <PhotoList photos={similarPhotosArray} toggleFav={toggleFav} isFav={isFav} showModal={showModal} />
       </div>
     </div>
   );
