@@ -20,7 +20,7 @@ const App = () => {
     <div className="App">
       <div className="photo-list">
         <HomeRoute topics={topics} photos={photos} showModal={showModal} />
-        {modal && <PhotoDetailsModal photo={selectedPhoto} setModal={setModal} />}
+        {modal && <PhotoDetailsModal selectedPhoto={selectedPhoto} setModal={setModal} />}
       </div>
     </div>
   );
