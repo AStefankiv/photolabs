@@ -4,7 +4,7 @@ import topics from './mocks/topics';
 import photos from './mocks/photos';
 import { React } from 'react';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from 'hooks/useApplicationData.js';
+import useApplicationData from 'hooks/useApplicationData';
 
 
 const App = () => {
