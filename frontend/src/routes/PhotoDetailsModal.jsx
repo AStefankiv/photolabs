@@ -6,12 +6,10 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ selectedPhoto, setModal, toggleFav, showModal, isFav }) => {
-  console.log(selectedPhoto);
-  console.log('selectedPhoto.SIMILAR_PHOTOS' + selectedPhoto.SIMILAR_PHOTOS);
+  // console.log(selectedPhoto);
+  // console.log('selectedPhoto.SIMILAR_PHOTOS' + selectedPhoto.SIMILAR_PHOTOS);
 
   const similarPhotosArray = selectedPhoto.SIMILAR_PHOTOS ? Object.values(selectedPhoto.SIMILAR_PHOTOS) : [];//Object.values() to convert the object to an array
-  console.log('similarPhotosArray' + similarPhotosArray);
-  console.log('Array???' + Array.isArray(similarPhotosArray));
 
   return (
     <div className="photo-details-modal">
@@ -19,7 +17,7 @@ const PhotoDetailsModal = ({ selectedPhoto, setModal, toggleFav, showModal, isFa
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-        <PhotoFavButton isFav={isFav} toggleFav={toggleFav} photoId={selectedPhoto.id}></PhotoFavButton>
+        <PhotoFavButton onClick={() => toggleFav(selectedPhoto.id)} isFavorite={isFav(selectedPhoto.id)} photoId={selectedPhoto.id}></PhotoFavButton>
         <img className="photo-details-modal__image" src={selectedPhoto.urls.regular} alt="Image"></img>
         <div className="photo-details-modal__photographer-details">
           <img className="photo-list__user-profile" src={selectedPhoto.user.profile} alt={`Profile Image for ${selectedPhoto.user.username}`}></img>
@@ -32,7 +30,7 @@ const PhotoDetailsModal = ({ selectedPhoto, setModal, toggleFav, showModal, isFa
         </div>
         <p className='photo-details-modal__header'>Similar Photos</p>
       </div>
-      <div className='photo-details-modal__top-bar'>
+      <div className='photo-details-modal__similar-photos'>
         <PhotoList photos={similarPhotosArray} toggleFav={toggleFav} isFav={isFav} showModal={showModal} />
       </div>
     </div>

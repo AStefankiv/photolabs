@@ -7,12 +7,11 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = ({ photos, toggleFav, isFav, showModal }) => {
 
-  console.log('Photos' + photos);
+  // console.log('Photos' + photos);
   
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
-        // <PhotoListItem key={photo.id} photo={photo} toggleFav={toggleFav} isFav={isFav} showModal={showModal} />
         <PhotoListItem key={photo.id}
           photo={photo}
           toggleFav={toggleFav}
