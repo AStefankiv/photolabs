@@ -79,7 +79,13 @@ const useApplicationData = () => {
       .then((photos) => dispatch({ type: 'SET_PHOTO_DATA', photos }));
   }, []);
 
-  const getPhotosByTopic = (topicId) => dispatch({ type: 'GET_PHOTOS_BY_TOPICS', photos: state.photoData.filter((photo) => photo.topic === topicId) });
+  
+  const getPhotosByTopic = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+      .then((response) => response.json())
+      .then((photos) => dispatch({ type: 'GET_PHOTOS_BY_TOPICS', photos }));
+  };
+  
 
   return {
     ...state,
