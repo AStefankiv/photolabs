@@ -1,57 +1,6 @@
-import { useState, useReducer } from "react";
-
-// export default function useApplicationData() {
-
-//   const [modal, setModal] = useState(false);//useState to manage the modal state
-//   const [selectedPhoto, setSelectedPhoto] = useState(null);//useState to manage the selected photo
-
-//   const showModal = (photo) => {
-//     setSelectedPhoto(photo);
-//     setModal(true);
-//   };
-
-//   const [like, setLike] = useState([]);
-
-//   // const toggleFav = (photoId) => {//Do not use this function
-//   //   if (like.includes(photoId)) {
-//   //     setLike(like.filter(id => id !== photoId));
-//   //   } else {
-//   //     setLike([...like, photoId]);
-//   //   }
-//   // };
-
-//   const toggleFav = (photoId) => {
-//     setLike((prevLike) => {
-//       if (prevLike.includes(photoId)) {
-//         return prevLike.filter((id) => id !== photoId);
-//       } else {
-//         return [...prevLike, photoId];
-//       }
-//     });
-//   };
-
-//   const isFav = (photoId) => like.includes(photoId);
-  
-//   console.log('Like: ' + like);
-
-//   const isFavPhotoExist = like.length > 0;
-  
-//   return {
-//     modal,
-//     setModal,
-//     selectedPhoto,
-//     setSelectedPhoto,
-//     like,
-//     setLike,
-//     showModal,
-//     toggleFav,
-//     isFav,
-//     isFavPhotoExist,
-//   };
-// }
+import { useReducer, useEffect }  from "react";
 
 
-//Remove useState from useApplicationData and replace it with useReducer
 const reducer = (state, action) => {
   if (action.type === 'FAV_PHOTO_ADDED') {
     return { ...state, like: [...state.like, action.photoId] };
@@ -73,18 +22,20 @@ const reducer = (state, action) => {
   }
   if (action.type === 'HIDE_PHOTO_DETAILS') {
     return { ...state, modal: false, selectedPhoto: null };
+  } else {
+    throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
-  return state;
 };
+
+
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, {
     modal: false,
     selectedPhoto: null,
     like: [],
-    photos: [],
-    topics: [],
-    setModal: true,
+    photoData: [],
+    topicData: [],
   });
 
   const showModal = (photo) => {
@@ -92,7 +43,7 @@ const useApplicationData = () => {
     dispatch({ type: 'DISPLAY_PHOTO_DETAILS' });
   };
 
-  const setModal = (value) => {
+  const closeModal = (value) => {//previous name 'setModal'
     if (value === false) {
       dispatch({ type: 'HIDE_PHOTO_DETAILS' });
     }
@@ -110,13 +61,19 @@ const useApplicationData = () => {
 
   const isFavPhotoExist = state.like.length > 0;
 
+  useEffect(() => {
+    fetch('/api/photos')
+      .then((res) => res.json())
+      .then((photos) => dispatch({ type: 'SET_PHOTO_DATA', photoData: photos }));
+  }, []);
+
   return {
     ...state,
     showModal,
     toggleFav,
     isFav,
     isFavPhotoExist,
-    setModal,
+    closeModal,
   };
 };
 
