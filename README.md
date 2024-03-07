@@ -23,6 +23,7 @@ View similar photos
 * Users can view a heart icon with a notification in the navigation if there are liked photos
 * Users can click on a photo to view a larger version of the photo and relevant / similar photos
 * Users can navigate to view photos categorized by different topics
+* Users can refresh the page by clicking on the 'Photolabs' logo
 
 
 ## Setup
