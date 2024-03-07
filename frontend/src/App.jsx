@@ -1,7 +1,5 @@
 import './App.scss';
-import HomeRoute from 'components/HomeRoute';
-// import topics from './mocks/topics';
-// import photos from './mocks/photos';
+import HomeRoute from 'routes/HomeRoute';
 import { React } from 'react';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';

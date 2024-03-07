@@ -6,8 +6,6 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ selectedPhoto, closeModal, toggleFav, showModal, isFav }) => {
-  console.log(selectedPhoto);
-  console.log('selectedPhoto.similar_photos' + selectedPhoto.similar_photos);
 
   const similarPhotosArray = selectedPhoto.similar_photos ? Object.values(selectedPhoto.similar_photos) : [];//Object.values() to convert the object to an array
 

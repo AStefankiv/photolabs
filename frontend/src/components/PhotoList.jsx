@@ -6,8 +6,6 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = ({ photos, toggleFav, isFav, showModal }) => {
-
-  // console.log('Photos' + photos);
   
   return (
     <ul className="photo-list">
