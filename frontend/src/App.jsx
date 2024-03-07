@@ -22,14 +22,21 @@ const App = () => {
     isFavPhotoExist,
     photoData,
     topicData,
+    getPhotosByTopic,
   } = useApplicationData();
   
   
   return (
     <div className="App">
       <div className="photo-list">
-        <HomeRoute topics={topicData} photos={photoData} showModal={showModal} like={like} setLike={setLike} toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist} setSelectedPhoto={setSelectedPhoto} />
-        {modal && <PhotoDetailsModal selectedPhoto={selectedPhoto} closeModal={closeModal} like={like} setLike={setLike} toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist} setSelectedPhoto={setSelectedPhoto} />}
+        <HomeRoute
+          topics={topicData} photos={photoData} showModal={showModal} like={like} setLike={setLike}
+          toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist}
+          setSelectedPhoto={setSelectedPhoto} getPhotosByTopic={getPhotosByTopic} />
+
+        {modal && <PhotoDetailsModal selectedPhoto={selectedPhoto} closeModal={closeModal}
+          like={like} setLike={setLike} toggleFav={toggleFav} isFav={isFav}
+          isFavPhotoExist={isFavPhotoExist} setSelectedPhoto={setSelectedPhoto} />}
       </div>
     </div>
   );

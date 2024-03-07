@@ -9,10 +9,10 @@ const reducer = (state, action) => {
     return { ...state, like: state.like.filter((id) => id !== action.photoId) };
   }
   if (action.type === 'SET_PHOTO_DATA') {
-    return { ...state, photos: action.photos };
+    return { ...state, photoData: action.photos };
   }
   if (action.type === 'SET_TOPIC_DATA') {
-    return { ...state, topics: action.topics };
+    return { ...state, topicData: action.topics };
   }
   if (action.type === 'SELECT_PHOTO') {
     return { ...state, selectedPhoto: action.photo };
@@ -22,6 +22,9 @@ const reducer = (state, action) => {
   }
   if (action.type === 'HIDE_PHOTO_DETAILS') {
     return { ...state, modal: false, selectedPhoto: null };
+  }
+  if (action.type === 'GET_PHOTOS_BY_TOPICS') {
+    return { ...state, photoData: action.photos };
   } else {
     throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
@@ -33,6 +36,7 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, {
     modal: false,
     selectedPhoto: null,
+    selectedTopic: null,
     like: [],
     photoData: [],
     topicData: [],
@@ -62,10 +66,20 @@ const useApplicationData = () => {
   const isFavPhotoExist = state.like.length > 0;
 
   useEffect(() => {
-    fetch('/api/photos')
+    fetch('/api/topics')
       .then((res) => res.json())
-      .then((photos) => dispatch({ type: 'SET_PHOTO_DATA', photoData: photos }));
+      .then((topics) => {
+        dispatch({ type: 'SET_TOPIC_DATA', topics });
+      });
   }, []);
+
+  useEffect(() => {
+    fetch('/api/photos')
+      .then((response) => response.json())
+      .then((photos) => dispatch({ type: 'SET_PHOTO_DATA', photos }));
+  }, []);
+
+  const getPhotosByTopic = (topicId) => dispatch({ type: 'GET_PHOTOS_BY_TOPICS', photos: state.photoData.filter((photo) => photo.topic === topicId) });
 
   return {
     ...state,
@@ -74,6 +88,7 @@ const useApplicationData = () => {
     isFav,
     isFavPhotoExist,
     closeModal,
+    getPhotosByTopic,
   };
 };
 

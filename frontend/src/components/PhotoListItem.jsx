@@ -10,7 +10,7 @@ const PhotoListItem = ({ photo, toggleFav, isFav, showModal }) => {
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.user.profile} alt='Profile' />
         <div className="photo-list__user-info">
-          {photo.user.username} {' '} {photo.user.name}
+          {photo.user.username} {'-'} {photo.user.name}
           <div className="photo-list__user-location">
             {photo.location.city}, {photo.location.country}
           </div>
