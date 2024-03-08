@@ -27,11 +27,14 @@
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+  display: flex;//added this
+  flex-direction: column;//added this
 }
 
 .photo-details-modal__image {
   max-width: 95%;
   border-radius: 8px;
+  margin-bottom: 16px;
 }
 
 .photo-details-modal__top-bar {
