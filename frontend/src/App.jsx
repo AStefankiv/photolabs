@@ -11,9 +11,6 @@ const App = () => {
     modal,
     closeModal,
     selectedPhoto,
-    setSelectedPhoto,
-    like,
-    setLike,
     showModal,
     toggleFav,
     isFav,
@@ -28,13 +25,12 @@ const App = () => {
     <div className="App">
       <div className="photo-list">
         <HomeRoute
-          topics={topicData} photos={photoData} showModal={showModal} like={like} setLike={setLike}
-          toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist}
-          setSelectedPhoto={setSelectedPhoto} getPhotosByTopic={getPhotosByTopic} />
+          topics={topicData} photos={photoData} showModal={showModal}
+          toggleFav={toggleFav} isFav={isFav} isFavPhotoExist={isFavPhotoExist} getPhotosByTopic={getPhotosByTopic} />
 
         {modal && <PhotoDetailsModal selectedPhoto={selectedPhoto} closeModal={closeModal}
-          like={like} setLike={setLike} toggleFav={toggleFav} isFav={isFav}
-          isFavPhotoExist={isFavPhotoExist} setSelectedPhoto={setSelectedPhoto} />}
+          toggleFav={toggleFav} isFav={isFav}
+          isFavPhotoExist={isFavPhotoExist} />}
       </div>
     </div>
   );
